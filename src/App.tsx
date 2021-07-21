@@ -1,8 +1,8 @@
 import './index.css';
-import { isValid } from './stack/test1';
+import { hotPotato } from './queue/hotPotato';
 
 const App = ()  => {
-  console.log(isValid('()))'))
+  console.log(hotPotato(['a', 'b', 'c', 'd', 'e'], 3))
   return (
     <main></main>
   );

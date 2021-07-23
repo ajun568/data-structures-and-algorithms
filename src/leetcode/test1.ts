@@ -1,8 +1,6 @@
-/**
- * leetcode - 20 有效的括号
- */
+// leetcode - 20 有效的括号
 
-import Stack from './index';
+import Stack from '../stack/index';
 export const isValid = (str: string): boolean => {
   const stack = new Stack();
   const strMap: any = {

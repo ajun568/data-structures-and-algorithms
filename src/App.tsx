@@ -2,7 +2,8 @@ import './index.css';
 
 const App = ()  => {
   return (
-    <main></main>
+    <main>
+    </main>
   );
 }
 

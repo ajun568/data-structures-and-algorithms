@@ -1,6 +1,6 @@
-/* li {
+li {
   list-style: none;
-} */
+}
 .flex {
   display: flex;
   align-items: center;
@@ -32,7 +32,7 @@ ul li {
   color: rgb(255, 94, 0);
 }
 .grey {
-  margin-left: 15px;
+  margin-left: 30px;
   color: rgba(128, 128, 128, 0.902);
 }
 .blue {

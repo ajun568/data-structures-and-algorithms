@@ -1,4 +1,4 @@
-// leetcode - 225 用栈实现队列
+// leetcode - 232 用栈实现队列
 
 import Stack from '../stack/index';
 

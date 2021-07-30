@@ -1,8 +1,8 @@
 import './index.css';
-import LinkedList from './linkedList';
+import LinkedList from './linkedList/oneWayCirculationLinkedList';
 const App = ()  => {
   const linkedList = new LinkedList();
-  linkedList.append('黄刀小五')
+  console.log(linkedList)
   return (
     <main>
     </main>

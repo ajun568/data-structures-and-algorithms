@@ -1,3 +1,4 @@
+// 单向循环链表
 class Node<T> {
   element: T | null;
   next: Node<T> | null;
@@ -15,14 +16,19 @@ class LinkedList<T> {
   append(element: T) {
     let node = new Node<T>(element);
 
-    if (!this.head) {
+    if (!this.head) {  // 链表为空
       this.head = node;
-    } else {
+      node.next = this.head;
+    }
+    
+    else { // 链表不为空
       let current = this.head;
-      while (current.next) {
-        current = current.next;
+      let index = 0;
+      while (++index < this.length) {
+        current = current.next as Node<T>;
       }
       current.next = node;
+      node.next = this.head;
     }
 
     this.length++;
@@ -36,10 +42,32 @@ class LinkedList<T> {
     let current = this.head;
     let previous: Node<T> | null = null;
 
-    if (position === 0) {
+    if (position === 0) { // 插入头部
+      if (this.head) { // 链表不为空
+        node.next = this.head;
+        while (current && ++index < this.length) {
+          current = current.next;
+        }
+        (current as Node<T>).next = node;
+        node.next = this.head;
+        this.head = node;
+      }
+      
+      else { // 链表为空
+        this.head = node;
+        node.next = this.head;
+      }
+    }
+
+    else if (position === this.length - 1) { // 插入尾部
+      while (current && ++index < this.length) {
+        current = current.next;
+      }
+      (current as Node<T>).next = node;
       node.next = this.head;
-      this.head = node;
-    } else {
+    }
+    
+    else { // 插入其它位置
       while (current && index++ < position) {
         previous = current;
         current = current.next;
@@ -59,9 +87,28 @@ class LinkedList<T> {
     let current: Node<T> | null = this.head;
     let previous: Node<T> | null = null;
 
-    if (position === 0) {
-      this.head = this.head.next;
-    } else {
+    if (position === 0) { // 删除头部
+      if (this.length === 1) { // 仅有头节点
+        this.head = null;
+      }
+      
+      else {
+        this.head = this.head.next;
+        while (current && ++index < this.length) {
+          current = current.next;
+        }
+        (current as Node<T>).next = this.head;
+      }
+    }
+
+    else if (position === this.length - 1) {
+      while (current && ++index < this.length - 1) {
+        current = current.next;
+      }
+      (current as Node<T>).next = this.head;
+    }
+    
+    else {
       while (current && index++ < position) {
         previous = current;
         current = current.next;
@@ -77,7 +124,7 @@ class LinkedList<T> {
     let current = this.head;
     let index = 0;
 
-    while (current) {
+    while (current && index < this.length) {
       if (typeof current.element === 'object') {
         if (JSON.stringify(element) === JSON.stringify(current.element)) return index;
       } else {

@@ -1,4 +1,5 @@
 // leetcode - 20 有效的括号
+// 栈 + 对象
 
 import Stack from '../stack/index';
 export const isValid = (str: string): boolean => {
